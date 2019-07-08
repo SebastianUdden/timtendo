@@ -210,7 +210,7 @@ const Cell = styled.div`
       ? `rotate(${getRotation(p.playerDirection)}deg)`
       : ""};
   width: 100%;
-  height: 5vh;
+  height: 2rem;
 `
 
 const Icon = styled.img`

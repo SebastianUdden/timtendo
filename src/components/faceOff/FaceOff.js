@@ -85,8 +85,8 @@ const H2 = styled.h2`
 `
 
 const Wrapper = styled.div`
-  margin-top: 14vh;
-  height: 60vh;
+  margin-top: 1rem;
+  height: 35rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

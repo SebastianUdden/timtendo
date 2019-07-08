@@ -8,7 +8,10 @@ const Controller = ({ player, direction, setDirection }) => {
     <Container>
       <Arrow
         player={player}
-        onClick={() => setDirection(direction === "left" ? "left2" : "left")}
+        onClick={e => {
+          e.preventDefault()
+          setDirection(direction === "left" ? "left2" : "left")
+        }}
       >
         <Icon
           rotate={90}
@@ -20,7 +23,10 @@ const Controller = ({ player, direction, setDirection }) => {
         <Arrow
           mid
           player={player}
-          onClick={() => setDirection(direction === "up" ? "up2" : "up")}
+          onClick={() => {
+            e.preventDefault()
+            setDirection(direction === "up" ? "up2" : "up")
+          }}
         >
           <Icon
             rotate={180}
@@ -31,7 +37,10 @@ const Controller = ({ player, direction, setDirection }) => {
         <Arrow
           mid
           player={player}
-          onClick={() => setDirection(direction === "down" ? "down2" : "down")}
+          onClick={() => {
+            e.preventDefault()
+            setDirection(direction === "down" ? "down2" : "down")
+          }}
         >
           <Icon
             rotate={0}
@@ -42,7 +51,10 @@ const Controller = ({ player, direction, setDirection }) => {
       </Mid>
       <Arrow
         player={player}
-        onClick={() => setDirection(direction === "right" ? "right2" : "right")}
+        onClick={() => {
+          e.preventDefault()
+          setDirection(direction === "right" ? "right2" : "right")
+        }}
       >
         <Icon
           rotate={270}

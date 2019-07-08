@@ -58,17 +58,16 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 17vh;
   justify-content: stretch;
   background-color: red;
+  min-height: 7rem;
 `
 
 const Mid = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100%;
-  height: 10vh;
+  min-height: 3rem;
   width: 100%;
 `
 
@@ -85,8 +84,8 @@ const Arrow = styled.button`
 const Icon = styled.img`
   height: 100%;
   width: 100%;
-  max-height: 4rem;
-  max-width: 4rem;
+  max-height: 3rem;
+  max-width: 3rem;
   margin: 0;
   padding: 0;
   transform: ${p => `rotate(${p.rotate}deg)`};

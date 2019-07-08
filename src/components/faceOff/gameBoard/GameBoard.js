@@ -210,7 +210,7 @@ const Cell = styled.div`
       ? `rotate(${getRotation(p.playerDirection)}deg)`
       : ""};
   width: 100%;
-  height: 6vh;
+  height: 5vh;
 `
 
 const Icon = styled.img`
@@ -220,7 +220,7 @@ const Icon = styled.img`
   padding: 0;
 `
 
-const PlayerHeading = styled.h2`
+const PlayerHeading = styled.h3`
   margin: 0;
   padding: 0;
   text-align: center;
@@ -229,9 +229,11 @@ const PlayerHeading = styled.h2`
 
 const PlayerOne = styled(PlayerHeading)`
   color: ${p => p.playerColor};
+  margin-top: 0.2rem;
   transform: rotate(180deg);
 `
 const PlayerTwo = styled(PlayerHeading)`
+  margin-bottom: 0.2rem;
   color: ${p => p.playerColor};
 `
 

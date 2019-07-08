@@ -80,13 +80,13 @@ const FaceOff = () => {
 
 const H2 = styled.h2`
   text-align: center;
-  margin: 0;
   font-size: 6rem;
   color: ${p => p.playerColor};
 `
 
 const Wrapper = styled.div`
-  height: 70vh;
+  margin-top: 14vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

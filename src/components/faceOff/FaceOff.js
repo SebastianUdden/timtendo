@@ -16,6 +16,14 @@ const FaceOff = () => {
   const [p2Direction, setP2Direction] = useState("up")
 
   useEffect(() => {
+    const doubleTouchStartTimestamp = 0
+    document.addEventListener("touchstart", event => {
+      let now = +new Date()
+      if (doubleTouchStartTimestamp + 500 > now) {
+        event.preventDefault()
+      }
+      doubleTouchStartTimestamp = now
+    })
     setDisplayWinner(winners[winners.length - 1])
     setTimeout(() => {
       setDisplayWinner(undefined)

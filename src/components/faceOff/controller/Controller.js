@@ -80,14 +80,13 @@ const Arrow = styled.button`
   width: 100%;
   height: 100%;
   background-color: ${p => p.player};
-  touch-action: manipulation;
 `
 
 const Icon = styled.img`
   height: 100%;
   width: 100%;
-  max-height: 7rem;
-  max-width: 5rem;
+  max-height: 4rem;
+  max-width: 4rem;
   margin: 0;
   padding: 0;
   transform: ${p => `rotate(${p.rotate}deg)`};

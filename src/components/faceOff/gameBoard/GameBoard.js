@@ -186,6 +186,7 @@ const GameBoard = ({
 }
 
 const Board = styled.div`
+  touch-action: none;
   margin: 0;
   border: 3px solid #777;
   background-color: #444;

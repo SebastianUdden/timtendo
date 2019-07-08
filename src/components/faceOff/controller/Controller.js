@@ -55,6 +55,7 @@ const Controller = ({ player, direction, setDirection }) => {
 }
 
 const Container = styled.div`
+  touch-action: none;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -64,6 +65,7 @@ const Container = styled.div`
 `
 
 const Mid = styled.div`
+  touch-action: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -72,6 +74,7 @@ const Mid = styled.div`
 `
 
 const Arrow = styled.button`
+  touch-action: none;
   color: #444;
   background-color: #444;
   border: 1px solid #222;
@@ -82,6 +85,7 @@ const Arrow = styled.button`
 `
 
 const Icon = styled.img`
+  touch-action: none;
   height: 100%;
   width: 100%;
   max-height: 3rem;

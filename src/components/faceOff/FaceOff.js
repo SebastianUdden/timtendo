@@ -87,12 +87,14 @@ const FaceOff = () => {
 }
 
 const H2 = styled.h2`
+  touch-action: none;
   text-align: center;
   font-size: 6rem;
   color: ${p => p.playerColor};
 `
 
 const Wrapper = styled.div`
+  touch-action: none;
   height: 35rem;
   display: flex;
   flex-direction: column;

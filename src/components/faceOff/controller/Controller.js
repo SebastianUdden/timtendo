@@ -59,7 +59,7 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: stretch;
-  background-color: red;
+  background-color: inherit;
   min-height: 7rem;
 `
 
@@ -78,6 +78,7 @@ const Arrow = styled.button`
   min-height: ${p => (p.mid ? "50" : "100")}%;
   width: 100%;
   height: 100%;
+  min-height: 100%;
 `
 
 const Icon = styled.img`

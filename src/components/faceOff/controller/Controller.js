@@ -78,7 +78,6 @@ const Arrow = styled.button`
   min-height: ${p => (p.mid ? "50" : "100")}%;
   width: 100%;
   height: 100%;
-  background-color: ${p => p.player};
 `
 
 const Icon = styled.img`

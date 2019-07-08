@@ -46,7 +46,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 80vh;
 `
 
 const H2 = styled.h2`
@@ -61,6 +60,7 @@ const H3 = styled.h3`
 `
 
 const Button = styled.button`
+  margin: 2rem 0;
   background-color: green;
   color: white;
   padding: 0.5rem;

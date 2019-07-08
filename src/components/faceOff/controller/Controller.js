@@ -23,7 +23,7 @@ const Controller = ({ player, direction, setDirection }) => {
         <Arrow
           mid
           player={player}
-          onClick={() => {
+          onClick={e => {
             e.preventDefault()
             setDirection(direction === "up" ? "up2" : "up")
           }}
@@ -37,7 +37,7 @@ const Controller = ({ player, direction, setDirection }) => {
         <Arrow
           mid
           player={player}
-          onClick={() => {
+          onClick={e => {
             e.preventDefault()
             setDirection(direction === "down" ? "down2" : "down")
           }}
@@ -51,7 +51,7 @@ const Controller = ({ player, direction, setDirection }) => {
       </Mid>
       <Arrow
         player={player}
-        onClick={() => {
+        onClick={e => {
           e.preventDefault()
           setDirection(direction === "right" ? "right2" : "right")
         }}

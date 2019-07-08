@@ -80,6 +80,7 @@ const Arrow = styled.button`
   width: 100%;
   height: 100%;
   background-color: ${p => p.player};
+  touch-action: manipulation;
 `
 
 const Icon = styled.img`

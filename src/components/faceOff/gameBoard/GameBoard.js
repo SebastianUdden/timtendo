@@ -70,33 +70,50 @@ const GameBoard = ({
     // From above
     if (p1.x === p2.x && p1.y === p2.y - 1 && p1Direction.startsWith("down")) {
       setKillMove("p1")
-    }
-    if (p2.x === p1.x && p2.y === p1.y - 1 && p2Direction.startsWith("down")) {
+    } else if (
+      p2.x === p1.x &&
+      p2.y === p1.y - 1 &&
+      p2Direction.startsWith("down")
+    ) {
       setKillMove("p2")
-    }
-
-    // From below
-    if (p1.x === p2.x && p1.y === p2.y + 1 && p1Direction.startsWith("up")) {
+    } else if (
+      p1.x === p2.x &&
+      p1.y === p2.y + 1 &&
+      p1Direction.startsWith("up")
+    ) {
       setKillMove("p1")
-    }
-    if (p2.x === p1.x && p2.y === p1.y + 1 && p2Direction.startsWith("up")) {
+    } else if (
+      p2.x === p1.x &&
+      p2.y === p1.y + 1 &&
+      p2Direction.startsWith("up")
+    ) {
       setKillMove("p2")
-    }
-
-    // From left
-    if (p1.x === p2.x - 1 && p1.y === p2.y && p1Direction.startsWith("right")) {
+    } else if (
+      p1.x === p2.x - 1 &&
+      p1.y === p2.y &&
+      p1Direction.startsWith("right")
+    ) {
       setKillMove("p1")
-    }
-    if (p2.x === p1.x - 1 && p2.y === p1.y && p2Direction.startsWith("right")) {
+    } else if (
+      p2.x === p1.x - 1 &&
+      p2.y === p1.y &&
+      p2Direction.startsWith("right")
+    ) {
       setKillMove("p2")
-    }
-
-    // From left
-    if (p1.x === p2.x + 1 && p1.y === p2.y && p1Direction.startsWith("left")) {
+    } else if (
+      p1.x === p2.x + 1 &&
+      p1.y === p2.y &&
+      p1Direction.startsWith("left")
+    ) {
       setKillMove("p1")
-    }
-    if (p2.x === p1.x + 1 && p2.y === p1.y && p2Direction.startsWith("left")) {
+    } else if (
+      p2.x === p1.x + 1 &&
+      p2.y === p1.y &&
+      p2Direction.startsWith("left")
+    ) {
       setKillMove("p2")
+    } else {
+      setKillMove(undefined)
     }
 
     // Neutralise y and x
@@ -108,6 +125,7 @@ const GameBoard = ({
     ) {
       setP1Stop("down")
       setP2Stop("up")
+      setKillMove(undefined)
     } else if (
       p2.x === p1.x &&
       p2.y === p1.y - 1 &&
@@ -116,6 +134,7 @@ const GameBoard = ({
     ) {
       setP1Stop("up")
       setP2Stop("down")
+      setKillMove(undefined)
     } else if (
       p1.x === p2.x - 1 &&
       p1.y === p2.y &&
@@ -124,6 +143,7 @@ const GameBoard = ({
     ) {
       setP1Stop("right")
       setP2Stop("left")
+      setKillMove(undefined)
     } else if (
       p2.x === p1.x - 1 &&
       p2.y === p1.y &&
@@ -132,6 +152,7 @@ const GameBoard = ({
     ) {
       setP1Stop("left")
       setP2Stop("right")
+      setKillMove(undefined)
     } else {
       setP1Stop(undefined)
       setP2Stop(undefined)
@@ -167,9 +188,9 @@ const GameBoard = ({
                 }
               >
                 {p1.y === index && p1.x === i ? (
-                  <Icon src={redTims} alt="1" />
+                  <Icon killMove={killMove === "p1"} src={redTims} alt="1" />
                 ) : p2.y === index && p2.x === i ? (
-                  <Icon src={blueTims} alt="2" />
+                  <Icon killMove={killMove === "p2"} src={blueTims} alt="2" />
                 ) : (
                   <></>
                 )}
@@ -219,6 +240,11 @@ const Icon = styled.img`
   width: 100%;
   margin: 0;
   padding: 0;
+  ${p =>
+    p.killMove &&
+    `
+    border-bottom: 0.8rem dotted #ee3333;
+  `}
 `
 
 const PlayerHeading = styled.h3`

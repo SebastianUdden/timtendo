@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import redTims from "../../../images/tims-red.png"
-import blueTims from "../../../images/tims-blue.png"
+import redTims from "../../images/tims-red.png"
+import blueTims from "../../images/tims-blue.png"
 
 const Controller = ({ player, direction, setDirection }) => {
   return (

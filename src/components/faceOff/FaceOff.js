@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import GameBoard from "./gameBoard/GameBoard"
-import Controller from "./controller/Controller"
+import Controller from "../controller/Controller"
 import GameMenu from "./gameMenu/GameMenu"
 
 const FaceOff = () => {

@@ -9,8 +9,8 @@ const Controller = ({ player, direction, setDirection }) => {
       <Arrow
         player={player}
         onClick={e => {
-          e.preventDefault()
-          e.stopPropagation()
+          // e.preventDefault()
+          // e.stopPropagation()
           setDirection(direction === "left" ? "left2" : "left")
         }}
       >
@@ -25,8 +25,8 @@ const Controller = ({ player, direction, setDirection }) => {
           mid
           player={player}
           onClick={e => {
-            e.preventDefault()
-            e.stopPropagation()
+            // e.preventDefault()
+            // e.stopPropagation()
             setDirection(direction === "up" ? "up2" : "up")
           }}
         >
@@ -40,8 +40,8 @@ const Controller = ({ player, direction, setDirection }) => {
           mid
           player={player}
           onClick={e => {
-            e.preventDefault()
-            e.stopPropagation()
+            // e.preventDefault()
+            // e.stopPropagation()
             setDirection(direction === "down" ? "down2" : "down")
           }}
         >
@@ -55,8 +55,8 @@ const Controller = ({ player, direction, setDirection }) => {
       <Arrow
         player={player}
         onClick={e => {
-          e.preventDefault()
-          e.stopPropagation()
+          // e.preventDefault()
+          // e.stopPropagation()
           setDirection(direction === "right" ? "right2" : "right")
         }}
       >

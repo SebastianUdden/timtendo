@@ -46,8 +46,6 @@ const TimsBoard = ({
   p1Direction,
   p1Color,
   setGameActive,
-  winners,
-  setWinners,
   playerNames,
   setTims,
   tims,

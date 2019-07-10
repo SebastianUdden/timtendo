@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from "react"
+import styled from "styled-components"
+
 import Controller from "../controller/Controller"
 import TimsBoard from "./timsBoard/TimsBoard"
 import TimsCounter from "./timsCounter/TimsCounter"
+import blueTims from "../../images/tims-blue.png"
 
-const COUNTDOWN_SECONDS = 60
+const COUNTDOWN_SECONDS = 5
 
 const SuperTims = () => {
   const [timing, setTiming] = useState(true)
   const [countdown, setCountdown] = useState(COUNTDOWN_SECONDS)
   const [tims, setTims] = useState(0)
-  const [gameActive, setGameActive] = useState(false)
-  const [displayWinner, setDisplayWinner] = useState(undefined)
-  const [winners, setWinners] = useState([])
-  const [playerNames, setPlayerNames] = useState({
-    p2: "Player 1",
-  })
+  const [collectedList, setCollectedList] = useState([])
+  const [gameActive, setGameActive] = useState(true)
+  // const [displayWinner, setDisplayWinner] = useState(undefined)
+  // const [playerNames, setPlayerNames] = useState({
+  //   p2: "Player 1",
+  // })
   const [p1Direction, setP1Direction] = useState("down")
+  useEffect(() => {
+    if (countdown === 0) {
+      setGameActive(false)
+      setCollectedList([...collectedList, tims])
+    }
+  }, [countdown])
 
   useEffect(() => {
     let interval
@@ -37,15 +46,43 @@ const SuperTims = () => {
 
   return (
     <>
-      <TimsCounter tims={tims} countdown={countdown} />
-      {countdown !== 0 && (
+      <TimsCounter gameActive={gameActive} tims={tims} countdown={countdown} />
+      {!gameActive && (
+        <>
+          <HighScore>
+            <H3>
+              <Score>High Sc</Score>
+              <MidIcon src={blueTims} />
+              <Score>re</Score>
+            </H3>
+            <CollectedList>
+              {collectedList &&
+                collectedList.map(c => (
+                  <Collected>
+                    {c}
+                    <Icon src={blueTims} />
+                  </Collected>
+                ))}
+            </CollectedList>
+          </HighScore>
+          <Button
+            onClick={() => {
+              setTims(0)
+              setCountdown(COUNTDOWN_SECONDS)
+              setGameActive(true)
+              setTiming(!timing)
+            }}
+          >
+            <H2>PLAY AGAIN</H2>
+          </Button>
+        </>
+      )}
+      {gameActive && (
         <>
           <TimsBoard
             p1Direction={p1Direction}
             p1Color={"#dd3333"}
             setGameActive={setGameActive}
-            setWinners={setWinners}
-            winners={winners}
             setTims={setTims}
             tims={tims}
           />
@@ -61,5 +98,68 @@ const SuperTims = () => {
     </>
   )
 }
+
+const HighScore = styled.div`
+  padding-top: 0.5rem;
+  border: 3px solid #777;
+  background-color: #444;
+  color: #eee;
+`
+
+const H3 = styled.h3`
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  text-align: center;
+`
+const Score = styled.span`
+  z-index: 298;
+  position: relative;
+`
+
+const CollectedList = styled.ul`
+  text-align: center;
+  list-style-type: none;
+  margin: 0 0 1rem;
+  padding: 0;
+`
+
+const Collected = styled.li`
+  margin: 0;
+  font-size: 2rem;
+  color: #777;
+`
+
+const Icon = styled.img`
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 1rem;
+  ${p =>
+    p.killMove &&
+    `
+    border-bottom: 0.8rem dotted #ee3333;
+    `}
+`
+
+const MidIcon = styled(Icon)`
+  position: relative;
+  z-index: 1;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin: -0.1rem -0.3rem;
+`
+
+const H2 = styled.h2`
+  margin: 0;
+  font-size: 3rem;
+`
+
+const Button = styled.button`
+  margin: 0;
+  background-color: green;
+  color: white;
+  padding: 0.5rem;
+  width: 100%;
+`
 
 export default SuperTims

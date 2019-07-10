@@ -5,10 +5,18 @@ import blueTims from "../../../images/tims-blue.png"
 const TimsCounter = ({ countdown, tims }) => {
   return (
     <Container>
-      {countdown !== 0 && <H3>{countdown}</H3>}
+      {countdown !== 0 ? (
+        <H2>
+          <Countdown>{countdown}</Countdown>
+        </H2>
+      ) : (
+        <Final>Collected</Final>
+      )}
       <H2>
-        {tims}
-        <Icon src={blueTims} alt="2" />
+        <Tims>
+          {tims}
+          <Icon src={blueTims} alt="2" />
+        </Tims>
       </H2>
     </Container>
   )
@@ -17,20 +25,27 @@ const TimsCounter = ({ countdown, tims }) => {
 const Container = styled.div`
   background-color: #444;
   border: 3px solid #777;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `
 
 const H2 = styled.h2`
   font-size: 6rem;
   color: #666;
-  margin: 1rem;
+  margin: 0 0 0.4rem;
   text-align: center;
 `
 
-const H3 = styled.h3`
+const Countdown = styled.div`
   color: #e33;
-  font-size: 2rem;
-  margin: 1rem;
-  text-align: center;
+`
+
+const Tims = styled.div``
+const Final = styled.h3`
+  margin: 0;
+  color: #777;
+  font-size: 1.5rem;
 `
 
 const Icon = styled.img`

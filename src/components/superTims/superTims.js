@@ -6,7 +6,7 @@ import TimsBoard from "./timsBoard/TimsBoard"
 import TimsCounter from "./timsCounter/TimsCounter"
 import blueTims from "../../images/tims-blue.png"
 
-const COUNTDOWN_SECONDS = 5
+const COUNTDOWN_SECONDS = 15
 
 const SuperTims = () => {
   const [timing, setTiming] = useState(true)
@@ -22,7 +22,7 @@ const SuperTims = () => {
   useEffect(() => {
     if (countdown === 0) {
       setGameActive(false)
-      setCollectedList([...collectedList, tims])
+      setCollectedList([...collectedList, tims].sort((a, b) => b - a))
     }
   }, [countdown])
 
@@ -59,8 +59,8 @@ const SuperTims = () => {
               {collectedList &&
                 collectedList.map(c => (
                   <Collected>
-                    {c}
-                    <Icon src={blueTims} />
+                    <Count>{c}</Count>
+                    <SmallIcon src={blueTims} />
                   </Collected>
                 ))}
             </CollectedList>
@@ -124,9 +124,20 @@ const CollectedList = styled.ul`
 `
 
 const Collected = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   margin: 0;
-  font-size: 2rem;
+  padding: 0;
+  margin-bottom: 0.2rem;
   color: #777;
+`
+
+const Count = styled.h4`
+  font-size: 1.5rem;
+  display: inline;
+  margin: 0;
+  padding: 0;
 `
 
 const Icon = styled.img`
@@ -147,6 +158,10 @@ const MidIcon = styled(Icon)`
   height: 1.5rem;
   width: 1.5rem;
   margin: -0.1rem -0.3rem;
+`
+
+const SmallIcon = styled(Icon)`
+  padding-bottom: 0.2rem;
 `
 
 const H2 = styled.h2`

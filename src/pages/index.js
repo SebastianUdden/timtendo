@@ -1,34 +1,64 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import FaceOff from "../components/faceOff/FaceOff"
 import SuperTims from "../components/superTims/superTims"
+import Timvesting from "../components/timvesting/timvesting"
+import Tims from "../components/tims/Tims"
+import FaulknersNotes from "../components/faulknersNotes/FaulknersNotes"
+import { get } from "../utils/api"
 
 const IndexPage = () => {
   const [tab, setTab] = useState(undefined)
+  const [users, setUsers] = useState(undefined)
+  const [tims, setTims] = useState(0)
+
+  useEffect(() => {
+    get(`${process.env.GATSBY_API_URL}/users`, "Unauthorized").then(users => {
+      console.log("users: ", users)
+      if (users.error) return
+      setUsers(users)
+      setTims(users && users[0].tims)
+    })
+  }, [])
+
   return (
     <Layout>
       <SEO title="Home" />
+      {!tab && users && users[0] && <Tims tims={tims} />}
+      {tab === "faulknersNotes" && users && users[0] && <Tims tims={tims} />}
       {!tab && (
-        <ButtonContainer>
-          <Button onClick={() => setTab("faceOff")}>
-            <H2>Face Off</H2>
-          </Button>
-          <Button onClick={() => setTab("superTims")}>
-            <H2>Super Tims</H2>
-          </Button>
-        </ButtonContainer>
+        <>
+          <ButtonContainer>
+            <Button color="green" onClick={() => setTab("timvesting")}>
+              <H2>TIMVESTING</H2>
+            </Button>
+            <Button color="blue" onClick={() => setTab("superTimtendo")}>
+              <H2>Super Timtendo</H2>
+            </Button>
+            <Button color="red" onClick={() => setTab("faulknersNotes")}>
+              <H2>Faulkners notes</H2>
+            </Button>
+          </ButtonContainer>
+        </>
       )}
-      {tab === "faceOff" && <FaceOff setTab={setTab} />}
-      {tab === "superTims" && <SuperTims setTab={setTab} />}
+      {tab === "timvesting" && <Timvesting setTab={setTab} />}
+      {tab === "superTimtendo" && <SuperTims setTab={setTab} />}
+      {tab === "faulknersNotes" && (
+        <FaulknersNotes
+          setTab={setTab}
+          user={users[0]}
+          tims={tims}
+          setTims={setTims}
+        />
+      )}
     </Layout>
   )
 }
 
 const Button = styled.button`
   margin: 1rem 2rem;
-  background-color: green;
+  background-color: ${p => p.color};
   color: white;
   padding: 1rem 2rem;
   width: 80%;
@@ -40,7 +70,6 @@ const H2 = styled.h2`
 `
 
 const ButtonContainer = styled.div`
-  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

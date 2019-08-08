@@ -3,6 +3,16 @@ import styled from "styled-components"
 import redTims from "../../images/tims-red.png"
 import blueTims from "../../images/tims-blue.png"
 
+const Icon = ({ player, rotate }) => {
+  return (
+    <IconImg
+      rotate={rotate}
+      src={player === 1 ? redTims : blueTims}
+      alt={player}
+    />
+  )
+}
+
 const Controller = ({ player, direction, setDirection }) => {
   return (
     <Container>
@@ -100,7 +110,7 @@ const Arrow = styled.button`
   min-height: 100%;
 `
 
-const Icon = styled.img`
+const IconImg = styled.img`
   touch-action: none;
   height: 100%;
   width: 100%;

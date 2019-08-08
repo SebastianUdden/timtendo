@@ -9,6 +9,12 @@ const Timvesting = () => {
         Bill: Turn to the game masters for more advice, timvesting is more than
         first meets the eye.
       </p>
+      <Button
+        color="green"
+        onClick={() => prompt("Write the correct password to continue...")}
+      >
+        Give password
+      </Button>
     </Wrapper>
   )
 }

@@ -57,7 +57,7 @@ const TimsBoard = ({
     y: y < 0 ? 0 : y,
   })
   const [p1, setP1] = useState({ x: 0, y: -1 })
-  const [p1Stop, setP1Stop] = useState(undefined)
+  const [p1Stop] = useState(undefined)
 
   useEffect(() => {
     setP1(changePosition(p1Direction, p1, p1Stop))
